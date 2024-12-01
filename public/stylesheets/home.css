@@ -1,0 +1,46 @@
+body {
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0.75)
+    ),
+    url(https://dec.ny.gov/sites/default/files/styles/hero_background/public/2023-11/3648245_MeachamLakeCampground_SeasonalSpectacular_Stacy_Bracy.jpg?h=ba7ce3cc&itok=feOt9X5u&upd=1701276535);
+  background-size: cover;
+  background-position: center;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+
+.cover-container {
+  max-width: 60vw;
+}
+
+.nav-link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.75);
+  margin-left: 1rem;
+  border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link.active {
+  color: rgba(0, 0, 0, 0.75);
+  border-bottom-color: rgba(0, 0, 0, 0.75);
+}
+
+.nav-link:hover {
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.btn-secondary {
+  color: gray;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  color: #ffffff;
+  text-shadow: none;
+  opacity: 1;
+}
