@@ -4,7 +4,6 @@ exports.authUser = async (req, accessToken, refreshToken, profile, done) => {
   try {
     if (!req.user) {
       const googleUser = await GoogleUser.findOne({ googleID: profile.id });
-      console.log(googleUser);
       if (googleUser) {
         return done(null, googleUser);
       }
