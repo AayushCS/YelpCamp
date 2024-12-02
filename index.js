@@ -113,7 +113,7 @@ app.set("views", path.join(__dirname, "views"));
 // mongodb://localhost:27017/yelp-camp
 
 mongoose
-  .connect("mongodb://localhost:27017/yelp-camp")
+  .connect(dbUrl)
   .then(() => console.log("Db connected"))
   .catch((err) => console.log(err));
 
