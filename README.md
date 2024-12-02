@@ -12,6 +12,7 @@ and engage with a community of outdoor enthusiasts.
 - Add photos and descriptions to campgrounds
 - Rate and leave reviews on campgrounds
 - View campgrounds on a map
+- Recieving welcome email as the user signs up
 
 ## Technologies Used
 - **Backend:** Node.js, Express.js
@@ -20,6 +21,7 @@ and engage with a community of outdoor enthusiasts.
 - **Authentication:** Passport.js
 - **Deployment:** Render (for live hosting)
 - **Mapping:** provided for free by MapBox
+- **Emails**: sent using NodeMailer
 
 ### Live Link 
 
