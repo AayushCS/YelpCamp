@@ -10,6 +10,9 @@ const register = async (req, res, next) => {
     const { email, username, password } = req.body;
     const user = new User({ email, username });
     const emailText = `
+     <div style="width:100%;height:auto;">
+    <img src="https://media.giphy.com/media/Ae7SI3LoPYj8Q/giphy.gif" alt="Welcome GIF" style="max-width: 100%; height: 200px;" />
+    </div>
       <h3>Hi ${username},</h3> 
       
       <p>Congratulations! You’ve successfully registered at YelpCamp – the ultimate community for discovering and sharing the best campgrounds around.</p>
