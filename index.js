@@ -10,14 +10,14 @@ const ExpressError = require("./utils/ExpressError.js");
 const campgroundRoutes = require("./routes/campgrounds.js");
 const reviewRoutes = require("./routes/reviews.js");
 const userRoutes = require("./routes/users.js");
+const oAuthRoutes = require("./routes/oAuth.js");
 const session = require("express-session");
 const flash = require("connect-flash");
-const passport = require("passport");
-const User = require("./models/user.js");
 const monogoSanitize = require("express-mongo-sanitize");
 const dbUrl = process.env.DB_URL;
 const MongoStore = require("connect-mongo");
 const sessionSecret = process.env.SESSION_SECRET;
+const _passport = require("./utils/passport.js");
 
 const sessionConfig = {
   name: "sid",
@@ -50,8 +50,6 @@ app.use(methodOverride("_method"));
 app.use(express.static("public"));
 app.use(flash());
 app.use(session(sessionConfig));
-app.use(passport.session());
-app.use(passport.initialize());
 app.use(monogoSanitize());
 app.use(helmet());
 
@@ -95,16 +93,14 @@ app.use(
         "https://res.cloudinary.com/duza28dny/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
         "https://images.unsplash.com",
         "https://dec.ny.gov",
+        "https://img.icons8.com",
       ],
       fontSrc: ["'self'", ...fontSrcUrls],
     },
   })
 );
 
-passport.use(User.createStrategy());
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+_passport.passportInit(app);
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
@@ -125,6 +121,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/", userRoutes);
+
+app.use("/auth", oAuthRoutes);
 
 app.use("/campgrounds", campgroundRoutes);
 

@@ -47,7 +47,6 @@ const renderlogin = (req, res) => {
 const login = (req, res) => {
   req.flash("success", "welcome back!");
   const redirectUrl = res.locals.returnTo || "campgrounds";
-  console.log(redirectUrl);
   res.redirect(`${redirectUrl}`);
 };
 
