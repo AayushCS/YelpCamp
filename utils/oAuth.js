@@ -1,4 +1,4 @@
-const GoogleUser = require("../models/googleUser");
+const GoogleUser = require("../models/user");
 
 exports.authUser = async (req, accessToken, refreshToken, profile, done) => {
   try {
@@ -10,11 +10,9 @@ exports.authUser = async (req, accessToken, refreshToken, profile, done) => {
       }
       const newGoogleUser = new GoogleUser({
         googleID: profile.id,
-        token: accessToken,
+        google_token: accessToken,
         email: profile.email,
-        firstName: profile.given_name,
-        lastName: profile.family_name,
-        picture: profile.picture,
+        username: profile.email.split("@")[0],
       });
       await newGoogleUser.save();
       return done(null, newGoogleUser);
