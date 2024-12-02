@@ -26,13 +26,13 @@ const sessionConfig = {
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
-    // secure: true,
+    secure: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
   store: MongoStore.create({
     mongoUrl: dbUrl,
-    secret: "thisshouldbeabettersecret",
+    secret: sessionSecret,
     touchAfter: 24 * 60 * 60,
   }),
 };
@@ -113,7 +113,7 @@ app.set("views", path.join(__dirname, "views"));
 // mongodb://localhost:27017/yelp-camp
 
 mongoose
-  .connect(dbUrl)
+  .connect("mongodb://localhost:27017/yelp-camp")
   .then(() => console.log("Db connected"))
   .catch((err) => console.log(err));
 
