@@ -4,8 +4,8 @@ const passportLocalMongoose = require("passport-local-mongoose");
 
 const UserSchema = new Schema({
   email: {
+    required:true,
     type: String,
-    required: true,
     unique: true,
   },
   googleID: String,
@@ -17,6 +17,7 @@ const UserSchema = new Schema({
     trim: true,
     lowercase: true,
   },
+  githubID: String,
 });
 
 UserSchema.plugin(passportLocalMongoose);

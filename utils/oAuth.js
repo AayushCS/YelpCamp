@@ -5,8 +5,21 @@ exports.authUser = async (req, accessToken, refreshToken, profile, done) => {
   try {
     if (!req.user) {
       const googleUser = await GoogleUser.findOne({ googleID: profile.id });
+      let existingUser = await GoogleUser.findOne({ email: profile.email });
       if (googleUser) {
         return done(null, googleUser);
+      }
+      if (existingUser) {
+        existingUser = await GoogleUser.findOneAndUpdate(
+          {
+            email: profile.email,
+          },
+          { googleID: profile.id, google_token: accessToken },
+          {
+            new: true,
+          }
+        );
+        return done(null, existingUser);
       }
 
       const newGoogleUser = new GoogleUser({

@@ -7,8 +7,25 @@ const {
 } = require("../controllers/oAuth");
 const passport = require("passport");
 const { storeReturnto } = require("../middleware");
+const {
+  loadGithubLogin,
+  githubRegisterOrLogin,
+} = require("../controllers/githubOAuth");
 
 router.get("/google", loadGoogleLogin);
+
+router.get("/github", loadGithubLogin);
+
+router.get(
+  "/github/callback",
+  storeReturnto,
+  passport.authenticate("github", {
+    failureRedirect: "/campgrounds",
+    failureFlash: true,
+    successFlash: true,
+  }),
+  catchAsync(githubRegisterOrLogin)
+);
 
 router.get(
   "/google/callback",
