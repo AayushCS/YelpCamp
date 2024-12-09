@@ -10,6 +10,7 @@
   "description": "",
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.16.1",
+    "axios": "^1.7.8",
     "bootstrap-icons": "^1.11.3",
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
@@ -30,6 +31,8 @@
     "nodemailer": "^6.9.16",
     "nodemon": "^3.1.7",
     "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth2": "^0.2.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^8.0.0",
     "sanitize-html": "^2.13.1"
